@@ -91,6 +91,8 @@
 !/examples/*/*/*.kts
 !/examples/sycl/*.bat
 !/examples/sycl/*.sh
+!/setup/*.bat
+!/setup/*.sh
 
 # Server Web UI temporary files
 /tools/server/webui/node_modules
