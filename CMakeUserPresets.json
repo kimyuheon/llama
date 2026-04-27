@@ -3,51 +3,29 @@
   "configurePresets": [
     {
       "name": "windows-msvc",
-      "inherits": "x64-windows-msvc-release",
-      "environment": {
-        "INCLUDE": "C:/Program Files/Microsoft Visual Studio/2022/Professional/VC/Tools/MSVC/14.44.35207/include;C:/Program Files (x86)/Windows Kits/10/Include/10.0.26100.0/ucrt;C:/Program Files (x86)/Windows Kits/10/Include/10.0.26100.0/shared;C:/Program Files (x86)/Windows Kits/10/Include/10.0.26100.0/um;C:/Program Files (x86)/Windows Kits/10/Include/10.0.26100.0/winrt",
-        "LIB": "C:/Program Files/Microsoft Visual Studio/2022/Professional/VC/Tools/MSVC/14.44.35207/lib/x64;C:/Program Files (x86)/Windows Kits/10/Lib/10.0.26100.0/um/x64;C:/Program Files (x86)/Windows Kits/10/Lib/10.0.26100.0/ucrt/x64",
-        "PATH": "C:/Program Files/Microsoft Visual Studio/2022/Professional/VC/Tools/MSVC/14.44.35207/bin/Hostx64/x64;C:/Program Files (x86)/Windows Kits/10/bin/10.0.26100.0/x64;$penv{PATH}"
-      },
-      "cacheVariables": {
-        "CMAKE_C_COMPILER": "C:/Program Files/Microsoft Visual Studio/2022/Professional/VC/Tools/MSVC/14.44.35207/bin/Hostx64/x64/cl.exe",
-        "CMAKE_CXX_COMPILER": "C:/Program Files/Microsoft Visual Studio/2022/Professional/VC/Tools/MSVC/14.44.35207/bin/Hostx64/x64/cl.exe",
-        "CMAKE_RC_COMPILER": "C:/Program Files (x86)/Windows Kits/10/bin/10.0.26100.0/x64/rc.exe",
-        "CMAKE_MT": "C:/Program Files (x86)/Windows Kits/10/bin/10.0.26100.0/x64/mt.exe"
-      }
+      "displayName": "Windows + MSVC",
+      "inherits": "x64-windows-msvc-release"
     },
     {
       "name": "windows-msvc-cuda",
+      "displayName": "Windows + MSVC + CUDA",
       "inherits": "x64-windows-msvc-release",
-      "environment": {
-        "INCLUDE": "C:/Program Files/Microsoft Visual Studio/2022/Professional/VC/Tools/MSVC/14.44.35207/include;C:/Program Files (x86)/Windows Kits/10/Include/10.0.26100.0/ucrt;C:/Program Files (x86)/Windows Kits/10/Include/10.0.26100.0/shared;C:/Program Files (x86)/Windows Kits/10/Include/10.0.26100.0/um;C:/Program Files (x86)/Windows Kits/10/Include/10.0.26100.0/winrt",
-        "LIB": "C:/Program Files/Microsoft Visual Studio/2022/Professional/VC/Tools/MSVC/14.44.35207/lib/x64;C:/Program Files (x86)/Windows Kits/10/Lib/10.0.26100.0/um/x64;C:/Program Files (x86)/Windows Kits/10/Lib/10.0.26100.0/ucrt/x64",
-        "PATH": "C:/Program Files/Microsoft Visual Studio/2022/Professional/VC/Tools/MSVC/14.44.35207/bin/Hostx64/x64;C:/Program Files (x86)/Windows Kits/10/bin/10.0.26100.0/x64;$penv{PATH}"
-      },
       "cacheVariables": {
-        "CMAKE_C_COMPILER": "C:/Program Files/Microsoft Visual Studio/2022/Professional/VC/Tools/MSVC/14.44.35207/bin/Hostx64/x64/cl.exe",
-        "CMAKE_CXX_COMPILER": "C:/Program Files/Microsoft Visual Studio/2022/Professional/VC/Tools/MSVC/14.44.35207/bin/Hostx64/x64/cl.exe",
-        "CMAKE_RC_COMPILER": "C:/Program Files (x86)/Windows Kits/10/bin/10.0.26100.0/x64/rc.exe",
-        "CMAKE_MT": "C:/Program Files (x86)/Windows Kits/10/bin/10.0.26100.0/x64/mt.exe",
         "GGML_CUDA": "ON",
-        "CUDAToolkit_ROOT": "C:/Program Files/NVIDIA GPU Computing Toolkit/CUDA/v13.2",
-        "CMAKE_CUDA_COMPILER": "C:/Program Files/NVIDIA GPU Computing Toolkit/CUDA/v13.2/bin/nvcc.exe"
+        "CMAKE_CUDA_ARCHITECTURES": "75;86;89;120",
+        "CUDAToolkit_ROOT": "$penv{CUDA_PATH}",
+        "CMAKE_CUDA_COMPILER": "$penv{CUDA_PATH}/bin/nvcc.exe"
       }
     },
     {
       "name": "windows-msvc-vulkan",
+      "displayName": "Windows + MSVC + Vulkan",
       "inherits": "x64-windows-msvc-release",
       "environment": {
         "VULKAN_SDK": "${sourceParentDir}/VulkanSdk/Win",
-        "INCLUDE": "C:/Program Files/Microsoft Visual Studio/2022/Professional/VC/Tools/MSVC/14.44.35207/include;C:/Program Files (x86)/Windows Kits/10/Include/10.0.26100.0/ucrt;C:/Program Files (x86)/Windows Kits/10/Include/10.0.26100.0/shared;C:/Program Files (x86)/Windows Kits/10/Include/10.0.26100.0/um;C:/Program Files (x86)/Windows Kits/10/Include/10.0.26100.0/winrt;${sourceParentDir}/VulkanSdk/Win/Include",
-        "LIB": "C:/Program Files/Microsoft Visual Studio/2022/Professional/VC/Tools/MSVC/14.44.35207/lib/x64;C:/Program Files (x86)/Windows Kits/10/Lib/10.0.26100.0/um/x64;C:/Program Files (x86)/Windows Kits/10/Lib/10.0.26100.0/ucrt/x64;${sourceParentDir}/VulkanSdk/Win/Lib",
-        "PATH": "C:/Program Files/Microsoft Visual Studio/2022/Professional/VC/Tools/MSVC/14.44.35207/bin/Hostx64/x64;C:/Program Files (x86)/Windows Kits/10/bin/10.0.26100.0/x64;${sourceParentDir}/VulkanSdk/Win/Bin;$penv{PATH}"
+        "PATH": "${sourceParentDir}/VulkanSdk/Win/Bin;$penv{PATH}"
       },
       "cacheVariables": {
-        "CMAKE_C_COMPILER": "C:/Program Files/Microsoft Visual Studio/2022/Professional/VC/Tools/MSVC/14.44.35207/bin/Hostx64/x64/cl.exe",
-        "CMAKE_CXX_COMPILER": "C:/Program Files/Microsoft Visual Studio/2022/Professional/VC/Tools/MSVC/14.44.35207/bin/Hostx64/x64/cl.exe",
-        "CMAKE_RC_COMPILER": "C:/Program Files (x86)/Windows Kits/10/bin/10.0.26100.0/x64/rc.exe",
-        "CMAKE_MT": "C:/Program Files (x86)/Windows Kits/10/bin/10.0.26100.0/x64/mt.exe",
         "GGML_VULKAN": "ON",
         "Vulkan_INCLUDE_DIR": "${sourceParentDir}/VulkanSdk/Win/Include",
         "Vulkan_LIBRARY": "${sourceParentDir}/VulkanSdk/Win/Lib/vulkan-1.lib"
